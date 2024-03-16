@@ -1,5 +1,3 @@
-from keep_alive import keep_alive
-keep_alive()
 
 
 import telebot
@@ -91,7 +89,7 @@ def add_user(message):
 load_users_from_database()
 
 
-@bot.message_handler(commands=['get'])
+@bot.message_handler(commands=['gghet'])
 def get(message):
   bot.reply_to(message, text='Vui lòng đợi')
 
@@ -118,10 +116,10 @@ def get(message):
   bot.reply_to(message, text)
 
 
-@bot.message_handler(commands=['k'])
+@bot.message_handler(commands=['dtk'])
 def k(message):
   if len(message.text.split()) == 1:
-    bot.reply_to(message, 'sử dụng /get để lấy key')
+    bot.reply_to(message, 'sử dụng /dget để lấy key')
     return
 
   user_id = message.from_user.id
@@ -183,13 +181,6 @@ def lqm_sms(message):
 @bot.message_handler(commands=['fb'])
 def lqm_sms(message):
   user_id = message.from_user.id
-  if user_id not in allowed_users:
-    bot.reply_to(
-        message,
-        text=
-        'Hãy /get để lấy key sử dụng lệnh này'
-    )
-    return
   if len(message.text.split()) == 1:
     bot.reply_to(message, 'Please enter link or fb id..')
     return
@@ -210,10 +201,8 @@ def how_to(message):
   how_to_text = '''
  Cách sử dụng và All lệnh của Bot:
 ✧══════ ༺༻ •══════✧
-- Use the /get command to get the key.
 - /tiktok : Download tiktok videos
 - /check : /check + [link] check anti ddos
-- /k {your key} to identify the key.
 - /fb <link hoặc id facebook>: Check facebook information (only authorized users).
 - /status: View information about the bot's uptime, % CPU, % Memory, % Disk usage.
 - /stop: Stop all running tasks. (Only Administrators Can Use This Command).
@@ -231,11 +220,9 @@ def how_to(message):
 def help(message):
   help_text = '''
  Danh sách lệnh:
-- /get : Lấy key sử dụng bot
 - /tiktok : tải video tiktok
 - /check : /check + link
 - /fb <link hoặc id facebook>: Check thông tin facebook (chỉ người dùng được phép).
-- /k "key của bạn": Kiểm tra key và xác nhận quyền sử dụng lệnh /fb.
 - /status: Xem thông tin về thời gian hoạt động, % CPU, % Memory, % Disk đang sử dụng của bot.
 - /stop: Dừng lại tất cả các tác vụ đang chạy. ( Chỉ Quản Trị Viên Mới Được Dùng Lệnh Này).
 -/restart: Khởi động lại bot (Chỉ admin).
